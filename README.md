@@ -7,22 +7,38 @@
 ## Install
 
 ```bash
-npm install --save react-modal
+npm i react-modal-babi
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { useState } from 'react';
+import Modal from 'react-modal-babi';
 
-import MyComponent from 'react-modal'
-import 'react-modal/dist/index.css'
+function App() {
+  const [showModal, setShowModal] = useState(false);
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <div>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal show={showModal} onClickCloseBtn={closeModal}>
+        <h1>Hello, I'm a modal!</h1>
+        <p>This is some modal content.</p>
+      </Modal>
+    </div>
+  );
 }
+
+export default App;
 ```
 
 ## License
